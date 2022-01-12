@@ -12,15 +12,13 @@ files
 
 
 #FUNCTIONS=========
+library(data.table)
+library(tidyverse)
 #Create a function to run over data in all csv files
 #WEB HELP = https://dplyr.tidyverse.org/articles/programming.html
 
-
-#Function 1 - 
 #Specify path to folder where iButtons spreadsheets are and list them all:
 setwd("C:/Users/BlueCarbon/Documents/00DeakinUni/R/SusannaVenn/SEM/Shrub-snowdrift/RawData2Bprocessed/SoilTemperature_ibuttons/2020")
-files <- list.files()
-files
 #Include full path:
 files <- list.files(path = "C:/Users/BlueCarbon/Documents/00DeakinUni/R/SusannaVenn/SEM/Shrub-snowdrift/RawData2Bprocessed/SoilTemperature_ibuttons/2020",
                     pattern = "*.csv", full.names = T)
@@ -59,7 +57,8 @@ iButtonData2020_processed <- iButtonData2020 %>%
   summarise(SnowDayNumber = length(SampleID)) %>%  #compute SnowDay number in 2020
   mutate(year = 2020)
 
-View(iButtonData2020_processed)#plots IDs are repeated - one per each date
+View(iButtonData2020_processed)
+#write.csv(iButtonData2020_processed, file = "SnowDays2020.csv", row.names = F)
 
 
 #PROOF of AV per Day ~ AV_rolling=========
